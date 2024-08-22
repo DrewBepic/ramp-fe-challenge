@@ -34,8 +34,8 @@ export function fakeFetch<TData, TParams extends object = object>(
           break
 
         case "paginatedTransactions":
+          //alert(JSON.stringify(params))
           result = getTransactionsPaginated(params as PaginatedRequestParams) as unknown as TData
-
           setTimeout(() => {
             mockApiLogger({ data: { endpoint, params, result } })
             resolve(result)
@@ -43,8 +43,8 @@ export function fakeFetch<TData, TParams extends object = object>(
           break
 
         case "transactionsByEmployee":
+          //alert(JSON.stringify(params))
           result = getTransactionsByEmployee(params as RequestByEmployeeParams) as unknown as TData
-
           setTimeout(() => {
             mockApiLogger({ data: { endpoint, params, result } })
             resolve(result)

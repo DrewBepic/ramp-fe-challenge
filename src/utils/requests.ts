@@ -24,8 +24,8 @@ export const getTransactionsPaginated = ({
     throw new Error("Page cannot be null")
   }
 
-  const start = page * TRANSACTIONS_PER_PAGE
-  const end = start + TRANSACTIONS_PER_PAGE
+  const start = 0 * TRANSACTIONS_PER_PAGE // Bug 4
+  const end = (page + 1) * TRANSACTIONS_PER_PAGE // Bug 4
 
   if (start > data.transactions.length) {
     throw new Error(`Invalid page ${page}`)
@@ -51,7 +51,6 @@ export const setTransactionApproval = ({ transactionId, value }: SetTransactionA
   const transaction = data.transactions.find(
     (currentTransaction) => currentTransaction.id === transactionId
   )
-
   if (!transaction) {
     throw new Error("Invalid transaction to approve")
   }

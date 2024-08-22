@@ -20,7 +20,7 @@ export function useCustomFetch() {
           const data = JSON.parse(cacheResponse)
           return data as Promise<TData>
         }
-
+        //alert("1")
         const result = await fakeFetch<TData>(endpoint, params)
         cache?.current.set(cacheKey, JSON.stringify(result))
         return result
